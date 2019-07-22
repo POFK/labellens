@@ -12,10 +12,10 @@ Then, run the script by
 ```
 phython server.py
 ```
-and open `http://127.0.0.1:5000/` in your browser.
+and open http://127.0.0.1:5000/ in your browser.
 
 ### configuration
-When you first use this script, the main page will redirect to the configuration page. And you can open this page by `http://127.0.0.1:5000/conf` at any time.
+When you first use this script, the main page will redirect to the configuration page. And you can open this page by http://127.0.0.1:5000/conf at any time.
 <img  border="0" src="./exam/0.png" style="text-align:center;">
 In this page, you should set the data directory and some hotkeys. The default value is:
 
