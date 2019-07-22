@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="static/css/page.css">
+        <script src="/static/js/func.js"></script>
+        <script>
+            var prop = {
+                index: 0,
+                path: "",
+                code: -1,
+            };
+        </script>
+
+        <script>
+            var update=function(event){
+                return postServer(prop, event)
+            };
+        </script>
+
+        <script>autoSave(300000);</script>
+
+    </head>
+    <body type="text" onkeypress="update(event)" />
+
+        <div class="row">
+            <h2 id='label'>
+                <div class='column side1'>
+                    Index / Unlabelled sample
+                </div>
+                <div class='column side2'>
+                    Index / Unlabelled sample
+                </div>
+
+            </h2>
+        </div>
+
+        <div class="rowimage">
+            <img id="Image" border="0" src="" style="text-align:center;">
+        </div>
+
+        <div class="footer">
+            <button class="button" onclick="save()" style="vertical-align:middle">
+                <span> Save </span>
+            </button>
+        </div>
+
+    </body>
+
+
+</html>
