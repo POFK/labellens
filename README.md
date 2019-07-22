@@ -1,5 +1,7 @@
 ### install
 ```
+git clone https://github.com/POFK/labellens.git
+cd labellens
 pip install -r requirements.txt
 ```
 
