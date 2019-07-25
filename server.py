@@ -30,27 +30,28 @@ class Page(object):
     def __init__(self, conf_path):
         self.path = conf_path
 
-    def index(self):
-        if not os.path.exists(self.path):
-            return redirect(url_for('conf'))
-        else:
-            return redirect(url_for('work'))
-
     def work(self):
         return render_template('work.html')
 
     def conf(self):
         return render_template('conf.html')
 
+    def login(self):
+        return render_template('login.html')
 
 if __name__ == "__main__":
     page = Page('configure.json')
 
     a = FlaskAppWrapper('wrap')
     dr = DataResponse()
-    a.add_endpoint(endpoint='/', endpoint_name='index', handler=page.index)
-    a.add_endpoint(endpoint='/work', endpoint_name='work', handler=page.work)
+    a.add_endpoint(endpoint='/', endpoint_name='login', handler=page.login)
     a.add_endpoint(endpoint='/conf', endpoint_name='conf', handler=page.conf)
+    a.add_endpoint(endpoint='/work', endpoint_name='work', handler=page.work)
+
+    a.add_endpoint(endpoint='/login/backend',
+                   endpoint_name='login_',
+                   handler=dr.login,
+                   methods=['POST', 'GET'])
     a.add_endpoint(endpoint='/conf/configure',
                    endpoint_name='configure',
                    handler=dr._configure,
@@ -66,5 +67,5 @@ if __name__ == "__main__":
                    endpoint_name='save',
                    handler=dr.autosave)
 
-#   a.run(host='0.0.0.0')
+#   a.run(host='0.0.0.0', port=10299)
     a.run()

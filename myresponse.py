@@ -8,14 +8,23 @@ from flask import request, render_template, redirect, url_for
 
 
 class DataResponse(object):
-    def __init__(self, fp_result='rank.txt'):
+    def __init__(self, fp_result='grade.txt'):
         self.fp_result = fp_result
         self.Finish = False
-        self.conf_path = "configure.json"
+
+    def login(self):
+        self.user = request.form['user']
+        self.conf_dir = os.path.join("user",self.user)
+        os.makedirs(self.conf_dir, exist_ok=True)
+        self.conf_path = os.path.join(self.conf_dir,"configure.json")
         try:
             self.configure()
         except:
             print("configure...")
+        if not os.path.exists(self.conf_path):
+            return redirect(url_for('conf'))
+        else:
+            return redirect(url_for('work'))
 
     def load_cpt(self):
         with open(self.OutPath, 'r') as fp:
@@ -73,7 +82,7 @@ class DataResponse(object):
         self.keys[conf['pre']] = {'next': -1}
         self.keys['-1'] = {'next': 0}
 
-        dir_result = os.path.join(self.dir, 'result')
+        dir_result = os.path.join(self.conf_dir, 'result')
         os.makedirs(dir_result, exist_ok=True)
         self.OutPath = os.path.join(dir_result, self.fp_result)
         print(self.OutPath)
