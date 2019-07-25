@@ -12,7 +12,7 @@ ln -s your/data/path static/data
 ```
 Then, run the script by
 ```
-phython server.py
+python server.py
 ```
 and open http://127.0.0.1:5000/ in your browser.
 
