@@ -201,7 +201,11 @@ class Response(object):
         text.append("#date: {}\n".format(dt.strftime("%c")))
         text.append("#column: image id, dir, image name, label\n")
         for im in ims:
-            prop = [im.id, im.catalog.name, im.name, im.tags[self.u].name]
+            try:
+                label = im.tags[self.u].name
+            except KeyError:
+                label = "-"
+            prop = [im.id, im.catalog.name, im.name, label]
             t = "{},{},{},{}\n".format(*prop)
             text.append(t)
         path = os.path.join(self.base_dir, "result/"+self.u.username+'.txt')
@@ -226,7 +230,7 @@ class Data(object):
     """
 
     def __init__(self, *args, **kwargs):
-        super(Response, self).__init__(*args, **kwargs)
+        super(Data, self).__init__(*args, **kwargs)
         self.base_dir = app.static_folder
         self.dirs = ["data", ]
 
@@ -247,7 +251,7 @@ class Data(object):
     def init_images(self):
         """admin needed"""
         for dir_path in self.dirs:
-            fps = self.get_fps(self.base_dir+dir_path)
+            fps = self.get_fps(os.path.join(self.base_dir,dir_path))
             cat = Catalog.query.filter_by(name=dir_path).first()
             IMs = []
             for fp in fps:
