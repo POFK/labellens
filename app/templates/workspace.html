@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block head %}
+{{super()}}
+{{ JSGlue.include() }}
+{% endblock %}
+
+{% block scripts %}
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+<script src="{{url_for('static', filename='js/func.js')}}"></script>
+<script>
+    var update=function(event){
+        return postToServer(event)
+    };
+</script>
+<script>
+
+download("#btn-download", "{{ url_for('workspace') }}/download");
+btncallfilter("#filter-all","{{ url_for('workspace') }}/filter_100");
+btncallfilter("#filter-btn1","{{ url_for('workspace') }}/filter_4");
+btncallfilter("#filter-btn2","{{ url_for('workspace') }}/filter_1");
+btncallfilter("#filter-btn3","{{ url_for('workspace') }}/filter_2");
+btncallfilter("#filter-btn4","{{ url_for('workspace') }}/filter_3");
+btncallfilter("#filter-btn5","{{ url_for('workspace') }}/filter_0");
+image_init();
+update_progress();
+setInterval(update_progress, 60000);
+</script>
+
+{{super()}}
+{% endblock %}
+
+{% block filter %}
+<div class="btn-group navbar-btn">
+    <button id="filter-name" type="button" class="btn btn-primary">Filter</button>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a id="filter-all">All images</a></li>
+        <li><a id="filter-btn1">Unlabelled</a></li>
+        <li><a id="filter-btn2">Grade A</a></li>
+        <li><a id="filter-btn3">Grade B</a></li>
+        <li><a id="filter-btn4">Grade C</a></li>
+        <li><a id="filter-btn5">Not lens</a></li>
+    </ul>
+</div>
+<button id="btn-download" type="button" class="btn btn-success">Download</button>
+{% endblock %}
+
+{% block app_content %}
+<div id="image_alert" class="alert alert-warning hide"></div>
+<div id="image_alert2" class="alert alert-warning hide"></div>
+
+<body type="text" onkeypress="update(event)" />
+    </br>
+    <div class="img-responsive">
+        <img id="Image" src="" alt="image" style="width:100%">
+        <div class="caption text-center">
+            <p id="caption"></p>
+        </div>
+    </div>
+</body>
+
+{%- block footer %}
+<div class="progress">
+    <div id="p-bar" class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                            aria-valuemin="0" aria-valuemax="100" style="width:0%">
+    </div>
+</div>
+<!--
+    <button id="btn1" type="button" class="btn btn-default" role="button">Save</button>
+-->
+{%- endblock footer %}
+{% endblock %}
+

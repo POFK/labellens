@@ -1,3 +1,8 @@
+### init database
+flask db init
+flask db migrate -m "init"
+flask db upgrade
+
 ### install
 ```
 git clone https://github.com/POFK/labellens.git
