@@ -1,2 +1,3 @@
 data/app.db
+app/static/data
 __pycache__/
