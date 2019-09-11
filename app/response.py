@@ -125,7 +125,7 @@ class Response(object):
             return {}
         except AttributeError:
             self.filter_all()
-            mess = "There is no unlabelled image, and all images are displayed."
+            mess = "There is no unlabeled image, and all images are displayed."
             return {"message": mess}
 
     def filter_tagA(self):
@@ -226,7 +226,7 @@ class Data(object):
         add_tag: im[u] = label, if none, default nonlense
         save: db.commit()
         auto_save: ...
-        filter: unlabelled, A, B, C, N...
+        filter: unlabeled, A, B, C, N...
     """
 
     def __init__(self, *args, **kwargs):

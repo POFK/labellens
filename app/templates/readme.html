@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+<h1>Readme</h1>
+<p class="lead">
+This website is used to add labels to BASS images.
+</p>
+
+<h2>Login</h2>
+<p class="lead">You should <a href="/login">register</a> and <a href="/register">login</a> before using it.</p>
+
+<h2>Hotkeys</h2>
+<p class="lead">In <a href="/setting">this page</a>, you can set hotkeys. The default values are as follows :</p>
+<div class="img-thumbnail">
+    <img id="Image" src="static/exam/setting.png" alt="image" style="width:100%">
+    <div class="caption text-center">
+        <p id="caption"></p>
+    </div>
+</div>
+<h2>Workspace</h2>
+
+<h3>Control</h3>
+<p class="lead">
+<a href="/workspace">This page</a> is the workspace. In this page, you can use the hotkeys to add labels or check result.
+With the default hotkeys, you can add grade-A, B, C or non-lens labels by pressing the "1", "2", "3" or "0" keys. The "j" and "k" keys help you get the next or previous image.
+</br>
+Note: When you go to the last image, you cannot get the next image by pressing the “j” key.
+</p>
+
+
+<h3>Filter</h3>
+<p class="lead">
+There are some filters for rolling back to the first image of some specific groups: all images, grade-A, B, C, non-lens and unlabeled images.
+When you open the workspace page for the first time, the default filter is "All images".
+In some cases, the "unlabeled" filter is a good choice for getting all unlabeled images.
+</p>
+<div class="img-thumbnail">
+    <img id="Image" src="static/exam/filter0.png" alt="image" style="width:100%">
+    <div class="caption text-center">
+        <p id="caption"></p>
+    </div>
+</div>
+
+<p class="lead">
+If the filter gets no image, it will return all images whatever they are labeled or not.
+</p>
+<div class="img-thumbnail">
+    <img id="Image" src="static/exam/filter1.png" alt="image" style="width:100%">
+    <div class="caption text-center">
+        <p id="caption"></p>
+    </div>
+</div>
+
+{% endblock %}

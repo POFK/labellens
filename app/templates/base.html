@@ -31,6 +31,7 @@ Welcome to LensFinder
                 {% block filter %} {% endblock%}
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('readme') }}">readme</a></li>
                 {% if current_user.is_anonymous %}
                 <li><a href="{{ url_for('login') }}">Login</a></li>
                 {% else %}

@@ -38,6 +38,10 @@ def res_init(user):
 def index():
     return render_template("index.html", title='Home Page')
 
+@app.route('/readme')
+def readme():
+    return render_template("readme.html", title='Readme')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
