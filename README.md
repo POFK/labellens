@@ -15,9 +15,11 @@ Then open http://127.0.0.1:5000/ in your browser.
 ### configuration
 
 #### init database
+```
 flask db init
 flask db migrate -m "init"
 flask db upgrade
+```
 
 #### key map
 | key          |  result            |
