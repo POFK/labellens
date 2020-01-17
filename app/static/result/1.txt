@@ -1,0 +1,13 @@
+#author: 1
+#date: Fri Jan 17 21:03:45 2020
+#column: image id, dir, image name, label
+1,data,84651002819.png,A
+2,data,84651013968.png,B1
+3,data,84651018070.png,B2
+4,data,84651019902.png,B3
+5,data,84651020475.png,B4
+6,data,84651020533.png,N
+7,data,84651021925.png,N
+8,data,84651022038.png,-
+9,data,84651025036.png,-
+10,data,84651025183.png,N

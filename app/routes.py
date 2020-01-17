@@ -100,9 +100,11 @@ def setting():
         assert query.count() < 2, \
             "There should be only one setting item per user!"
         data = {
-            "grade_a": form.grade_a.data,
-            "grade_b": form.grade_b.data,
-            "grade_c": form.grade_c.data,
+            "grade_1": form.grade_1.data,
+            "grade_2": form.grade_2.data,
+            "grade_3": form.grade_3.data,
+            "grade_4": form.grade_4.data,
+            "grade_5": form.grade_5.data,
             "nonlens": form.nonlens.data,
             "next_im": form.next_im.data,
             "prev_im": form.prev_im.data,
@@ -133,10 +135,14 @@ def tag_filter(num):
     elif num == 1:
         mes = res.filter_tagA()
     elif num == 2:
-        mes = res.filter_tagB()
+        mes = res.filter_tagB1()
     elif num == 3:
-        mes = res.filter_tagC()
+        mes = res.filter_tagB2()
     elif num == 4:
+        mes = res.filter_tagB3()
+    elif num == 5:
+        mes = res.filter_tagB4()
+    elif num == 6:
         mes = res.filter_untag()
     elif num == 100:
         mes = res.filter_all()

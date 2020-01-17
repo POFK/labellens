@@ -18,11 +18,13 @@
 
 download("#btn-download", "{{ url_for('workspace') }}/download");
 btncallfilter("#filter-all","{{ url_for('workspace') }}/filter_100");
-btncallfilter("#filter-btn1","{{ url_for('workspace') }}/filter_4");
+btncallfilter("#filter-btn1","{{ url_for('workspace') }}/filter_6");
 btncallfilter("#filter-btn2","{{ url_for('workspace') }}/filter_1");
 btncallfilter("#filter-btn3","{{ url_for('workspace') }}/filter_2");
 btncallfilter("#filter-btn4","{{ url_for('workspace') }}/filter_3");
-btncallfilter("#filter-btn5","{{ url_for('workspace') }}/filter_0");
+btncallfilter("#filter-btn5","{{ url_for('workspace') }}/filter_4");
+btncallfilter("#filter-btn6","{{ url_for('workspace') }}/filter_5");
+btncallfilter("#filter-btn7","{{ url_for('workspace') }}/filter_0");
 image_init();
 update_progress();
 setInterval(update_progress, 60000);
@@ -41,9 +43,11 @@ setInterval(update_progress, 60000);
         <li><a id="filter-all">All images</a></li>
         <li><a id="filter-btn1">Unlabeled</a></li>
         <li><a id="filter-btn2">Grade A</a></li>
-        <li><a id="filter-btn3">Grade B</a></li>
-        <li><a id="filter-btn4">Grade C</a></li>
-        <li><a id="filter-btn5">Not lens</a></li>
+        <li><a id="filter-btn3">Grade B1</a></li>
+        <li><a id="filter-btn4">Grade B2</a></li>
+        <li><a id="filter-btn5">Grade B3</a></li>
+        <li><a id="filter-btn6">Grade B4</a></li>
+        <li><a id="filter-btn7">Not lens</a></li>
     </ul>
 </div>
 <button id="btn-download" type="button" class="btn btn-success">Download</button>

@@ -30,9 +30,11 @@ class User(UserMixin, db.Model):
 
 class Conf(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    grade_a = db.Column(db.String(1))
-    grade_b = db.Column(db.String(1))
-    grade_c = db.Column(db.String(1))
+    grade_1 = db.Column(db.String(1))
+    grade_2 = db.Column(db.String(1))
+    grade_3 = db.Column(db.String(1))
+    grade_4 = db.Column(db.String(1))
+    grade_5 = db.Column(db.String(1))
     nonlens = db.Column(db.String(1))
     next_im = db.Column(db.String(1))
     prev_im = db.Column(db.String(1))

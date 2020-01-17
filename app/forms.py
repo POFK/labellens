@@ -33,9 +33,11 @@ class RegistrationForm(FlaskForm):
 
 
 class ConfigurationForm(FlaskForm):
-    grade_a = StringField("grade A:", default='1', validators=[DataRequired()])
-    grade_b = StringField("grade B:", default='2', validators=[DataRequired()])
-    grade_c = StringField("grade C:", default='3', validators=[DataRequired()])
+    grade_1 = StringField("grade A:", default='1', validators=[DataRequired()])
+    grade_2 = StringField("grade B1:", default='2', validators=[DataRequired()])
+    grade_3 = StringField("grade B2:", default='3', validators=[DataRequired()])
+    grade_4 = StringField("grade B3:", default='4', validators=[DataRequired()])
+    grade_5 = StringField("grade B4:", default='5', validators=[DataRequired()])
     nonlens = StringField("nonlens:", default='0', validators=[DataRequired()])
     next_im = StringField("next image:", default='j',
                           validators=[DataRequired()])
@@ -49,10 +51,12 @@ class FilterSelect(FlaskForm):
         label='Filter',
         choices=[(0, 'unlabelled'),
                  (1, 'grade A'),
-                 (2, 'grade B'),
-                 (3, 'grade C'),
-                 (4, 'lens'),
-                 (5, 'not lens'),
+                 (2, 'grade B1'),
+                 (3, 'grade B2'),
+                 (4, 'grade B3'),
+                 (5, 'grade B4'),
+                 (6, 'lens'),
+                 (7, 'not lens'),
                  ],
         default=0,
         coerce=int,

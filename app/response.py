@@ -30,9 +30,11 @@ class Response(object):
 
     def set_default_conf(self):
         data = {
-            "grade_a": "1",
-            "grade_b": "2",
-            "grade_c": "3",
+            "grade_1": "1",
+            "grade_2": "2",
+            "grade_3": "3",
+            "grade_4": "4",
+            "grade_5": "5",
             "nonlens": "0",
             "next_im": "j",
             "prev_im": "k",
@@ -53,14 +55,16 @@ class Response(object):
     def _conf_method(self):
         if Tag.query.filter_by(user_id=self.u.id).count() == 0:
             tags = []
-            for tag in ["A", "B", "C", "N"]:
+            for tag in ["A", "B1", "B2", "B3", "B4", "N"]:
                 tags.append(Tag(name=tag, user=self.u))
             db.session.add_all(tags)
             db.session.commit()
         self.keys = {}
-        self.keys[self.conf['grade_a']] = self.method(label="A", act=None)
-        self.keys[self.conf['grade_b']] = self.method(label="B", act=None)
-        self.keys[self.conf['grade_c']] = self.method(label="C", act=None)
+        self.keys[self.conf['grade_1']] = self.method(label="A", act=None)
+        self.keys[self.conf['grade_2']] = self.method(label="B1", act=None)
+        self.keys[self.conf['grade_3']] = self.method(label="B2", act=None)
+        self.keys[self.conf['grade_4']] = self.method(label="B3", act=None)
+        self.keys[self.conf['grade_5']] = self.method(label="B4", act=None)
         self.keys[self.conf['nonlens']] = self.method(label="N", act=None)
         self.keys[self.conf['next_im']] = self.method(
             label=None, act=self.next)
@@ -140,27 +144,51 @@ class Response(object):
             self.filter_all()
             return {"message": mess}
 
-    def filter_tagB(self):
+    def filter_tagB1(self):
         self.__delattr__("im_query")
         self.im_query = Image.query.join(Image.tags).filter(
-            Tag.name == "B").filter(Tag.user == self.u)
+            Tag.name == "B1").filter(Tag.user == self.u)
         try:
             self.im_id = self.im_query.order_by(Image.id.asc()).first().id
             return {}
         except AttributeError:
-            mess = "There is no grade-B level image, and all images are displayed."
+            mess = "There is no grade-B1 level image, and all images are displayed."
             self.filter_all()
             return {"message": mess}
 
-    def filter_tagC(self):
+    def filter_tagB2(self):
         self.__delattr__("im_query")
         self.im_query = Image.query.join(Image.tags).filter(
-            Tag.name == "C").filter(Tag.user == self.u)
+            Tag.name == "B2").filter(Tag.user == self.u)
         try:
             self.im_id = self.im_query.order_by(Image.id.asc()).first().id
             return {}
         except AttributeError:
-            mess = "There is no grade-C level image, and all images are displayed."
+            mess = "There is no grade-B2 level image, and all images are displayed."
+            self.filter_all()
+            return {"message": mess}
+
+    def filter_tagB3(self):
+        self.__delattr__("im_query")
+        self.im_query = Image.query.join(Image.tags).filter(
+            Tag.name == "B3").filter(Tag.user == self.u)
+        try:
+            self.im_id = self.im_query.order_by(Image.id.asc()).first().id
+            return {}
+        except AttributeError:
+            mess = "There is no grade-B3 level image, and all images are displayed."
+            self.filter_all()
+            return {"message": mess}
+
+    def filter_tagB4(self):
+        self.__delattr__("im_query")
+        self.im_query = Image.query.join(Image.tags).filter(
+            Tag.name == "B4").filter(Tag.user == self.u)
+        try:
+            self.im_id = self.im_query.order_by(Image.id.asc()).first().id
+            return {}
+        except AttributeError:
+            mess = "There is no grade-B4 level image, and all images are displayed."
             self.filter_all()
             return {"message": mess}
 
